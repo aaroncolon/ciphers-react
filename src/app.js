@@ -12,6 +12,9 @@ class App extends React.Component {
           <h1 className="title--site">Cipher</h1>
           <DecoderForm />
           <Results />
+          <footer>
+            <p className="text-center"><small>&copy; Aaron Colón</small></p>
+          </footer>
         </div>
       </>
     );
