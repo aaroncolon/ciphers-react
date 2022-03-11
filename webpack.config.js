@@ -1,16 +1,16 @@
-const webpack = require('webpack');
-const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const webpack = require('webpack')
+const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const config = {
   entry: [
     'react-hot-loader/patch',
     './src/index.js'
   ],
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
-  },
+  // output: {
+  //   path: path.resolve(__dirname, 'dist'),
+  //   filename: 'bundle.js'
+  // },
   module: {
     rules: [
       {
@@ -43,6 +43,20 @@ const config = {
   plugins: [
     new MiniCssExtractPlugin()
   ]
-};
+}
 
-module.exports = config;
+const mainConfig = Object.assign({}, config, {
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  }
+})
+
+const ghPagesConfig = Object.assign({}, config, {
+  output: {
+    path: path.resolve(__dirname, 'docs'),
+    filename: 'bundle.js'
+  }
+})
+
+module.exports = [ mainConfig, ghPagesConfig ]
