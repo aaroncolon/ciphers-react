@@ -1,16 +1,16 @@
 import {
   SET_CIPHER_TYPE,
   SET_STRING
-} from '../actions/actionTypes';
+} from '../actions/actionTypes'
 
 const initialState = {
   cipherType : 'alphabetic'
-};
+}
 
 export default function(state = initialState, action) {
   switch(action.type) {
     case SET_CIPHER_TYPE: {
-      const { cipherType } = action.payload;
+      const { cipherType } = action.payload
 
       return {
         ...state,
@@ -18,7 +18,7 @@ export default function(state = initialState, action) {
       }
     }
     case SET_STRING: {
-      const { string } = action.payload;
+      const { string } = action.payload
 
       return {
         ...state,
@@ -26,6 +26,6 @@ export default function(state = initialState, action) {
       }
     }
     default:
-      return state;
+      return state
   }
-};
+}

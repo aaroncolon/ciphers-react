@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 class TableRow extends React.Component {
   render() {
@@ -11,8 +11,8 @@ class TableRow extends React.Component {
         <td>=</td>
         <td>{this.props.total}</td>
       </tr>
-    );
+    )
   }
 }
 
-export default TableRow;
+export default TableRow

@@ -1,26 +1,26 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import TableRow from './TableRow';
-import cipherMaps from '../../cipherMaps';
+import React from 'react'
+import { connect } from 'react-redux'
+import TableRow from './TableRow'
+import cipherMaps from '../../cipherMaps'
 
 class Results extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    this.cipherMaps = cipherMaps;
+    this.cipherMaps = cipherMaps
   }
 
   decode(cipherType, string) {
-    let total = 0;
-    let s1 = string.toLowerCase();
-    let s2 = s1.replace(/\s/g, '');
-    let stringArray = [ ...s2 ];
-    let detailRows = [];
-    
+    let total = 0
+    let s1 = string.toLowerCase()
+    let s2 = s1.replace(/\s/g, '')
+    let stringArray = [ ...s2 ]
+    let detailRows = []
+
     stringArray.forEach(function(currVal, index) {
-      let oldTotal = total;
-      let cipherVal = this.cipherMaps[cipherType][currVal];
-      total += this.cipherMaps[cipherType][currVal];
+      let oldTotal = total
+      let cipherVal = this.cipherMaps[cipherType][currVal]
+      total += this.cipherMaps[cipherType][currVal]
       detailRows.push(
         <TableRow
           key={index + '-' + currVal}
@@ -28,8 +28,8 @@ class Results extends React.Component {
           cipherVal={cipherVal}
           oldTotal={oldTotal}
           total={total} />
-      );
-    }, this);
+      )
+    }, this)
 
     return {
       'total' : total,
@@ -39,10 +39,10 @@ class Results extends React.Component {
 
   render() {
     if (! this.props.string || ! this.props.string.length) {
-      return null;
+      return null
     }
 
-    const decodedData = this.decode(this.props.cipherType, this.props.string);
+    const decodedData = this.decode(this.props.cipherType, this.props.string)
 
     return (
       <div id="results">
@@ -51,11 +51,11 @@ class Results extends React.Component {
         <h3 className="h5">Word / Phrase:</h3>
         <h4 className="h3"><strong>{this.props.string}</strong></h4>
 
-        <h3 className="h5">Total:</h3> 
+        <h3 className="h5">Total:</h3>
         <h4 className="h3"><strong>{decodedData.total}</strong></h4>
 
         <hr />
-        
+
         <h2 className="h3 title--section">Details</h2>
         <div className="details">
           <table>
@@ -75,7 +75,7 @@ class Results extends React.Component {
           </table>
         </div>
       </div>
-    );
+    )
   }
 }
 
@@ -87,4 +87,4 @@ const mapStateToProps = function(state) {
   }
 }
 
-export default connect(mapStateToProps)(Results);
+export default connect(mapStateToProps)(Results)

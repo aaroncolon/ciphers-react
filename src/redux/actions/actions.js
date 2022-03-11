@@ -1,7 +1,7 @@
 import {
   SET_CIPHER_TYPE,
   SET_STRING
-} from './actionTypes';
+} from './actionTypes'
 
 export const setCipherType = function(data) {
   return {
